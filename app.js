@@ -1,11 +1,15 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let nuevoNombre = "";
 let listaAmigos = []; 
-let amigoSecreto= "";
+let cuadroTexto = document.getElementById("amigo");
+let amigoSecreto = document.getElementById("resultado");
+let listaAmigosHTML = document.getElementById("listaAmigos");
 
 function agregarAmigo() {
 
-    nuevoNombre = document.getElementById("amigo").value;
+    nuevoNombre = cuadroTexto.value;
+    cuadroTexto.value = ""; 
+    amigoSecreto.innerHTML = "";
     console.log(nuevoNombre);
 
     if(nuevoNombre == null || nuevoNombre == "" || nuevoNombre == undefined){
@@ -19,6 +23,7 @@ function agregarAmigo() {
     } else{
         listaAmigos.push(nuevoNombre);
         mostrarListaAmigos();
+        limpiar();
         console.log(listaAmigos);
         return;
     }
@@ -38,17 +43,25 @@ function mostrarListaAmigos() {
 function sortearAmigo(){
     
     if(listaAmigos.length < 2){
-        console.log("No hay suficientes amigos para sortear");
         alert("No hay suficientes amigos para sortear");
+        console.log("No hay suficientes amigos para sortear");
         return;
     }
     
     let indice = Math.floor(Math.random() * listaAmigos.length);
     amigoSecreto = listaAmigos[indice];
-    console.log(`Tu amigo secreto es: ${amigoSecreto}`);
     document.getElementById("resultado").innerHTML = amigoSecreto
-    document.getElementById("listaAmigos").innerHTML = ""; 
-    document.getElementById("amigo").value = "";
-    listaAmigos = [];
-
+    condicionesIniciales();
+      console.log(`Tu amigo secreto es: ${amigoSecreto}`);
+    return;
 }
+
+function condicionesIniciales(){
+    cuadroTexto.value = "";
+    listaAmigosHTML.innerHTML = "";
+    listaAmigos = [];
+    return;
+}
+
+
+condicionesIniciales();
