@@ -14,7 +14,7 @@
     <main class="main-content">
         <header class="header-banner">
             <h1 class="main-title">Amigo Secreto</h1>
-            <img src="assets/amigo-secreto.png" alt="Imagen representativa de amigo secreto">
+            <img id="imagen" src="assets/amigo-secreto.png" alt="Imagen representativa de amigo secreto">
         </header>
         
         <section class="input-section">
@@ -28,12 +28,12 @@
                 <!-- Aquí se agregarán los nombres de los amigos -->
             </ul>
 
-            <ul id="resultado" class="result-list" aria-live="polite"></ul>
+            <ul id="resultado" class="result-list" aria-live="polite" Tu amito secreto></ul>
 
             <div class="button-container">
-                <button id="soltear" class="button-draw" onclick="sortearAmigo()" aria-label="Sortear amigo secreto">
+                <button id="soltear" class="button-draw" onclick="funcionalidadBoton()" aria-label="Sortear amigo secreto">
                     <img src="assets/play_circle_outline.png" alt="Ícono para sortear">
-                    Sortear amigo
+                    Sortear Amigo Secreto
                 </button>
                 
             </div>
