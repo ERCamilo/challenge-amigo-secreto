@@ -39,10 +39,9 @@ function mostrarListaAmigos() {
     for (let i = 0; i < listaAmigos.length; i++) {
         listaHTML += `<br>${i+1}. ${listaAmigos[i]}<br>`;
     }
-
     lista.innerHTML = listaHTML;
-
 }
+
 function sortearAmigo() {
 
     if (listaAmigos.length < 2) {
@@ -58,6 +57,7 @@ function sortearAmigo() {
     listaAmigos.splice(indice, 1); // Elimina el amigo secreto de la lista para que no se repita
     mostrarListaAmigos();
     actualizarInterfaceSorteoRealizado();
+    listaAmigosHTML.innerHTML(`class= "name-list"`);
     return;
 }
 
@@ -106,6 +106,8 @@ function actualizarInterfaceSorteoNoRealizado() {
     boton.setAttribute("class", "button-draw");
     boton.innerHTML = `<img src= "assets/play_circle_outline.png" id ="image"> Sortear Amigo Secreto`;
     imagen.setAttribute("src", "assets/amigo-secreto.png");
+    document.getElementById("resultado").innerHTML = "¡Suerte! Presiona el botón para sortear tu amigo secreto.";
+    listaAmigosHTML.removeAttribute("class");
 }
 
 
