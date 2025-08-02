@@ -1,114 +1,112 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let nuevoNombre = "";
 let listaAmigos = [];
-let cuadroTexto = document.getElementById("amigo");
-let amigoSecreto = document.getElementById("resultado");
-let listaAmigosHTML = document.getElementById("listaAmigos");
-let boton = document.getElementById("soltear");
-let imagen = document.getElementById("imagen");
-let solteoRealizado  = false;
+let amigoSecreto = "";
+let sorteoRealizado = false;
 
+const cuadroTexto = document.getElementById("amigo");
+const listaAmigosHTML = document.getElementById("listaAmigos");
+const boton = document.getElementById("sortear");
+const imagen = document.getElementById("imagen");
+const cuadroResultado = document.getElementById("resultado");
+
+//Imágenes
+const imagenBotonSortear = document.getElementById("iconoSortear");
+const imagenAmigoSecreto = "assets/amigo-secreto.png";
+const iconoPlay = "assets/play_circle_outline.png";
+const imagenAmigoSecretoDescubierto = "assets/amigo-secreto-descubierto.png";
+const iconoReintentar = "assets/reintentar.png";
+const textoBotonSorteo = document.getElementById("textoBotonSorteo");
+
+//Funciones
 function agregarAmigo() {
 
-    nuevoNombre = cuadroTexto.value;
-    cuadroTexto.value = "";
-    amigoSecreto.innerHTML = "";
-    console.log(nuevoNombre);
+  nuevoNombre = cuadroTexto.value;
+  console.log(nuevoNombre);
 
-    if (nuevoNombre == null || nuevoNombre == "" || nuevoNombre == undefined) {
-        alert("El nombre no puede estar vacío");
-        console.log("El nombre no puede estar vacío");
-        return;
-    } else if (listaAmigos.includes(nuevoNombre)) {
-        alert("El nombre ya existe en la lista");
-        console.log("El nombre ya existe en la lista");
-        return;
-    } else {
-        listaAmigos.push(nuevoNombre);
-        mostrarListaAmigos();
-        console.log(listaAmigos);
-        return;
-    }
+  if (nuevoNombre == null || nuevoNombre == "" || nuevoNombre == undefined) {
+    alert("El nombre no puede estar vacío");
+  } else if (listaAmigos.includes(nuevoNombre)) {
+    alert("El nombre ya existe en la lista");
+  } else {
+    listaAmigos.push(nuevoNombre);
+    mostrarListaAmigos();
+    console.log(listaAmigos);
+  }
 }
 
-
 function mostrarListaAmigos() {
-    let lista = document.getElementById("listaAmigos");
-    let listaHTML = "";
+  listaAmigosHTML.innerHTML = "";
 
-    for (let i = 0; i < listaAmigos.length; i++) {
-        listaHTML += `<br>${i+1}. ${listaAmigos[i]}<br>`;
-    }
-    lista.innerHTML = listaHTML;
+  for (let i = 0; i < listaAmigos.length; i++) {
+    const linea = document.createElement("li");
+    const amigo = listaAmigos[i];
+    linea.id = `amigo-${i}`;
+    linea.innerText = ` ${i + 1}. ${amigo}`;
+    listaAmigosHTML.appendChild(linea);
+  }
 }
 
 function sortearAmigo() {
-
-    if (listaAmigos.length < 2) {
-        alert("No hay suficientes amigos para sortear");
-        console.log("No hay suficientes amigos para sortear");
-        return;
-    }
-
-    let indice = Math.floor(Math.random() * listaAmigos.length);
-    amigoSecreto = listaAmigos[indice];
-    document.getElementById("resultado").innerHTML = `Tu amigo secreto es:\n <br>${amigoSecreto}<br>`;
-    console.log(`Tu amigo secreto es: ${amigoSecreto}`);
-    listaAmigos.splice(indice, 1); // Elimina el amigo secreto de la lista para que no se repita
-    mostrarListaAmigos();
-    actualizarInterfaceSorteoRealizado();
-    listaAmigosHTML.innerHTML(`class= "name-list"`);
+  if (listaAmigos.length < 2) {
+    alert("No hay suficientes amigos para sortear");
     return;
+  }
+
+  let indice = Math.floor(Math.random() * listaAmigos.length);
+  let nombreAmigoSecreto = listaAmigos[indice];
+
+  cuadroResultado.innerText = `Tu amigo secreto es:\n ${nombreAmigoSecreto}`;
+  console.log(`Tu amigo secreto es: ${nombreAmigoSecreto}`);
+
+  //Elimina el amigo secreto de la lista para que no se repita
+  //listaAmigos.splice(indice, 1);
+
+  mostrarListaAmigos();
+  actualizarInterfaceSorteoRealizado();
+  document.getElementById(`amigo-${indice}`).className = "ganador";
 }
 
 function reintentarSorteo() {
-
-    solteoRealizado = false;
-    condicionesIniciales();
-    console.log("Sorteo reiniciado");
+  sorteoRealizado = false;
+  condicionesIniciales();
+  console.log("Sorteo reiniciado");
 }
 
 function funcionalidadBoton() {
-    if (solteoRealizado ) {
-        reintentarSorteo();
-        solteoRealizado = false;
-    } else {
-        sortearAmigo();
-        if(listaAmigos.length < 2) {
-        solteoRealizado = true;
-        }
+  if (sorteoRealizado) {
+    reintentarSorteo();
+    sorteoRealizado = false;
+  } else {
+    sortearAmigo();
+    if (listaAmigos.length < 2) {
+      sorteoRealizado = true;
     }
-    return;
+  }
 }
-
 
 function condicionesIniciales() {
-    cuadroTexto.value = "";
-    listaAmigosHTML.innerHTML = "";
-    amigoSecreto.innerHTML = "";
-    document.getElementById("resultado").innerHTML = "";
-    listaAmigos = [];
-    actualizarInterfaceSorteoNoRealizado();
-    return;
+  amigoSecreto = "";
+  cuadroTexto.value = "";
+  listaAmigosHTML.innerText = "";
+  cuadroResultado.innerText = "";
+  listaAmigos = [];
+  actualizarInterfaceSorteoNoRealizado();
+  cuadroResultado.innerText =
+    "¡Suerte! Presiona el botón para sortear tu amigo secreto.";
 }
 
-
 function actualizarInterfaceSorteoRealizado() {
-
-    boton.setAttribute("class", "button-draw2");
-    boton.innerHTML = `<img src="assets/reintentar.png" id="imagen"> Reintentar Sorteo`;
-    imagen.setAttribute("src", "assets/amigo-secreto-descubierto.png");
-
+  boton.className = "button-draw2";
+  textoBotonSorteo.innerText = "Reintentar";
+  imagenBotonSortear.src = iconoReintentar;
+  imagen.src = imagenAmigoSecretoDescubierto;
 }
 
 function actualizarInterfaceSorteoNoRealizado() {
-
-    boton.setAttribute("class", "button-draw");
-    boton.innerHTML = `<img src= "assets/play_circle_outline.png" id ="image"> Sortear Amigo Secreto`;
-    imagen.setAttribute("src", "assets/amigo-secreto.png");
-    document.getElementById("resultado").innerHTML = "¡Suerte! Presiona el botón para sortear tu amigo secreto.";
-    listaAmigosHTML.removeAttribute("class");
+  boton.className = "button-draw";
+  textoBotonSorteo.innerText = "Sortear Amigo Secreto";
+  imagenBotonSortear.src = iconoPlay;
+  imagen.src = imagenAmigoSecreto;
 }
-
 
 condicionesIniciales();
