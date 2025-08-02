@@ -1,25 +1,27 @@
 :root {
-/* Otras propiedades */
+  /* Otras propiedades */
   --color-primary: #4B69FD;
   --color-secondary: #FFF9EB;
   --color-tertiary: #C4C4C4;
   --color-button: #fe652b;
   --color-button-hover: #e55720;
   --color-text: #444444;
-  --color-white: #FFFFFF;}
+  --color-white: #FFFFFF;
+}
 
 * {
-/* Modelo de caja */
+  /* Modelo de caja */
   box-sizing: border-box;
 
   /* Márgenes */
   margin: 0;
 
   /* Relleno */
-  padding: 0;}
+  padding: 0;
+}
 
 body {
-/* Modelo de caja */
+  /* Modelo de caja */
   display: flex;
 
   /* Flexbox y Grid */
@@ -33,10 +35,11 @@ body {
   background: linear-gradient(135deg, var(--color-primary) 0%, #3651e8 100%);
 
   /* Tipografía */
-  font-family: "Inter", sans-serif;}
+  font-family: "Inter", sans-serif;
+}
 
 .main-content {
-/* Modelo de caja */
+  /* Modelo de caja */
   display: flex;
 
   /* Flexbox y Grid */
@@ -45,10 +48,11 @@ body {
   /* Dimensiones */
   height: 100%;
   width: 100%;
-  max-width: 800px;}
+  max-width: 800px;
+}
 
 .header-banner {
-/* Modelo de caja */
+  /* Modelo de caja */
   display: flex;
 
   /* Flexbox y Grid */
@@ -61,10 +65,11 @@ body {
   padding: 40px 20px 0;
 
   /* Tipografía */
-  text-align: center;}
+  text-align: center;
+}
 
 .input-section {
-/* Modelo de caja */
+  /* Modelo de caja */
   display: flex;
 
   /* Flexbox y Grid */
@@ -86,10 +91,11 @@ body {
   background-color: var(--color-secondary);
 
   /* Colores y efectos */
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);}
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
 
 .main-title {
-/* Márgenes */
+  /* Márgenes */
   margin-bottom: 20px;
 
   /* Tipografía */
@@ -100,20 +106,22 @@ body {
 
   /* Colores y efectos */
   color: var(--color-white);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);}
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
 
 .gift-icon {
-/* Márgenes */
+  /* Márgenes */
   margin-bottom: 20px;
 
   /* Tipografía */
   font-size: 60px;
 
   /* Transiciones y animaciones */
-  animation: bounce 2s infinite;}
+  animation: bounce 2s infinite;
+}
 
 .section-title {
-/* Márgenes */
+  /* Márgenes */
   margin: 10px 0 20px;
 
   /* Tipografía */
@@ -123,10 +131,11 @@ body {
   text-align: center;
 
   /* Colores y efectos */
-  color: var(--color-primary);}
+  color: var(--color-primary);
+}
 
 .input-wrapper {
-/* Modelo de caja */
+  /* Modelo de caja */
   display: flex;
 
   /* Flexbox y Grid */
@@ -137,10 +146,11 @@ body {
   max-width: 500px;
 
   /* Márgenes */
-  margin-bottom: 20px;}
+  margin-bottom: 20px;
+}
 
 .input-name {
-/* Flexbox y Grid */
+  /* Flexbox y Grid */
   flex: 1;
 
   /* Relleno */
@@ -156,25 +166,27 @@ body {
   font-family: "Inter", sans-serif;
 
   /* Transiciones y animaciones */
-  transition: all 0.3s ease;}
+  transition: all 0.3s ease;
+}
 
 .input-name:focus {
-/* Bordes */
+  /* Bordes */
   border-color: var(--color-button);
 
   /* Colores y efectos */
   box-shadow: 0 0 0 3px rgba(254, 101, 43, 0.1);
 
   /* Otras propiedades */
-  outline: none;}
+  outline: none;
+}
 
-.button-add {
-/* Relleno */
+.button-add,
+.button-addLista {
+  /* Relleno */
   padding: 12px 20px;
 
   /* Bordes */
   border: 2px solid var(--color-button);
-  border-radius: 0 25px 25px 0;
 
   /* Fondos */
   background-color: var(--color-button);
@@ -191,10 +203,12 @@ body {
   transition: all 0.3s ease;
 
   /* Interactividad */
-  cursor: pointer;}
+  cursor: pointer;
+}
 
+.button-addLista:hover,
 .button-add:hover {
-/* Bordes */
+  /* Bordes */
   border-color: var(--color-button-hover);
 
   /* Fondos */
@@ -204,14 +218,17 @@ body {
   box-shadow: 0 4px 12px rgba(254, 101, 43, 0.3);
 
   /* Otras propiedades */
-  transform: translateY(-2px);}
+  transform: translateY(-2px);
+}
 
+.button-addLista:active,
 .button-add:active {
-/* Otras propiedades */
-  transform: translateY(0);}
+  /* Otras propiedades */
+  transform: translateY(0);
+}
 
 .name-list {
-/* Modelo de caja */
+  /* Modelo de caja */
   display: flex;
 
   /* Flexbox y Grid */
@@ -234,10 +251,11 @@ body {
   color: var(--color-text);
 
   /* Otras propiedades */
-  list-style-type: none;}
+  list-style-type: none;
+}
 
 .name-list li {
-/* Relleno */
+  /* Relleno */
   padding: 8px 16px;
 
   /* Bordes */
@@ -254,17 +272,19 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   /* Transiciones y animaciones */
-  transition: all 0.3s ease;}
+  transition: all 0.3s ease;
+}
 
 .name-list li:hover {
-/* Colores y efectos */
+  /* Colores y efectos */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 
   /* Otras propiedades */
-  transform: translateY(-2px);}
+  transform: translateY(-2px);
+}
 
 .resaltado {
-/* Fondos */
+  /* Fondos */
   background: linear-gradient(135deg, #ffd54f, #ffeb3b) !important;
 
   /* Tipografía */
@@ -278,10 +298,11 @@ body {
   transition: all 0.2s ease !important;
 
   /* Otras propiedades */
-  transform: scale(1.05) !important;}
+  transform: scale(1.05) !important;
+}
 
 .ganador {
-/* Posicionamiento */
+  /* Posicionamiento */
   z-index: 10;
   position: relative;
 
@@ -298,40 +319,40 @@ body {
   animation: winner-pulse 1s ease-in-out infinite alternate;
 
   /* Otras propiedades */
-  transform: scale(1.15) !important;}
+  transform: scale(1.15) !important;
+}
 
 .result-list {
-/* Modelo de caja */
-  display: flex;
+  top: 0;
+  width: 100%;
+  color: white;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-  /* Flexbox y Grid */
+.result-list {
+  opacity: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Dimensiones */
   min-height: 50px;
-
-  /* Márgenes */
-  margin: 20px 0;
-
-  /* Tipografía */
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-
-  /* Colores y efectos */
-  color: var(--color-button);}
+  color: var(--color-button);
+}
 
 .button-container {
-/* Dimensiones */
+  /* Dimensiones */
   width: 100%;
   max-width: 300px;
 
   /* Márgenes */
-  margin-top: 20px;}
+  margin-top: 20px;
+}
 
-.button-draw, .button-draw2 {
-/* Modelo de caja */
+.button-draw,
+.button-draw2 {
+  /* Modelo de caja */
   display: flex;
 
   /* Flexbox y Grid */
@@ -358,45 +379,89 @@ body {
   transition: all 0.3s ease;
 
   /* Interactividad */
-  cursor: pointer;}
+  cursor: pointer;
+}
 
 .button-draw {
-/* Fondos */
+  /* Fondos */
   background: linear-gradient(135deg, var(--color-button), var(--color-button-hover));
 
   /* Colores y efectos */
   color: var(--color-white);
-  box-shadow: 0 4px 15px rgba(254, 101, 43, 0.3);}
+  box-shadow: 0 4px 15px rgba(254, 101, 43, 0.3);
+}
 
 .button-draw:hover {
-/* Colores y efectos */
+  /* Colores y efectos */
   box-shadow: 0 6px 20px rgba(254, 101, 43, 0.4);
 
   /* Otras propiedades */
-  transform: translateY(-2px);}
+  transform: translateY(-2px);
+}
 
 .button-draw2 {
-/* Fondos */
+  /* Fondos */
   background: linear-gradient(135deg, #666, #555);
 
   /* Colores y efectos */
   color: white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);}
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
 
 .button-draw2:hover {
-/* Fondos */
+  /* Fondos */
   background: linear-gradient(135deg, var(--color-button), var(--color-button-hover));
 
   /* Colores y efectos */
   box-shadow: 0 6px 20px rgba(254, 101, 43, 0.4);
 
   /* Otras propiedades */
-  transform: translateY(-2px);}
+  transform: translateY(-2px);
+}
 
 .button-icon {
-/* Tipografía */
-  font-size: 20px;}
+  /* Tipografía */
+  font-size: 20px;
+}
 
 .spinning {
-/* Transiciones y animaciones */
-  animation: spin 0.5s linear infinite;}
+  /* Transiciones y animaciones */
+  animation: spin 0.5s linear infinite;
+}
+
+.button-addLista {
+  /* Bordes */
+  border-radius: 0 25px 25px 0;
+
+  /* Fondos */
+  background-color: #3d59ef;
+}
+
+.button-icon-girar {
+  animation: rotar 2s linear infinite;
+}
+
+@keyframes rotar {
+  form {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.resultado-nombre {
+  opacity: 0;
+  margin-top: 0;
+  font-size: clamp(32px, 8vw, 48px);
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  color: #fe652b;
+  font-style: italic;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  top: 0;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
