@@ -1,7 +1,9 @@
 # 🎁 Amigo Secreto
 
 Aplicación web interactiva para realizar un sorteo de **Amigo Secreto** de forma divertida, animada y con efectos visuales 🎉.  
-![Recording2025-08-16231703-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/587cca72-3e09-4422-b397-00d895884c3b)
+<img src= "https://github.com/user-attachments/assets/587cca72-3e09-4422-b397-00d895884c3b" with = "275"/>
+
+- Link: https://ercamilo.github.io/challenge-amigo-secreto/
 
 Incluye:
 - Animación tipo ruleta para elegir al ganador.
@@ -79,8 +81,6 @@ El fondo y los estilos se adaptan automáticamente con transiciones animadas.
 
 <img width="300"   alt="image" src="https://github.com/user-attachments/assets/262b6ba4-2fd7-4f5d-bb3c-362fd7c6c7f7" />
 <img width="300"   alt="image" src="https://github.com/user-attachments/assets/025592d7-e3e5-4891-ad6f-48b54a1308dc" />
-
-
 <img src="https://github.com/user-attachments/assets/a45db254-8f76-4c52-ae53-1dda051df330" width="275"/>
 
 
