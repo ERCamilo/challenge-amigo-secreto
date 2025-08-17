@@ -1,4 +1,3 @@
-
 let nuevoNombre = "";
 let listaAmigos = [];
 let amigoSecreto = "";
@@ -23,11 +22,20 @@ const imagenPersonaje = document.getElementById("imagen");
 // Event listeners
 cuadroTexto.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    agregarAmigo();
+    botonAgregarAmigo();
   }
 });
 
 
+function botonAgregarAmigo(){
+  
+  if(cuadroTexto.value.includes(",")){
+    agregarAmigosDesdeLista();
+  }else{
+    agregarAmigo();
+  }
+
+}
 
 
 function agregarAmigosDesdeLista() {
@@ -89,7 +97,7 @@ function mostrarListaAmigos() {
   listaAmigos.forEach((amigo, index) => {
     const linea = document.createElement("li");
     linea.id = `amigo-${index}`;
-    linea.innerText = `${index + 1}. ${amigo}`;
+    linea.innerText = `${index + 1}. ${amigo} `;
     linea.addEventListener('click', () => eliminarAmigo(index));
     linea.title = "Haz clic para eliminar";
     listaAmigosHTML.appendChild(linea);
@@ -202,6 +210,7 @@ function finalizarSorteo(indiceGanador, ultimoIluminado) {
   // Quitar todos los resaltados
   document.querySelectorAll('.name-list li').forEach(li => {
     li.classList.remove('resaltado');
+     
   });
 
   // Mostrar el ganador
@@ -219,6 +228,7 @@ function finalizarSorteo(indiceGanador, ultimoIluminado) {
     }
 
     cuadroResultado.innerText = ``;
+    
     textoResultado.innerText = `¡${nombreAmigoSecreto}!`;
     cuadroResultado.style.setProperty("opacity", 0)
     textoResultado.style.setProperty("opacity", 1);
@@ -231,8 +241,10 @@ function finalizarSorteo(indiceGanador, ultimoIluminado) {
     // Scroll al ganador
     elementoGanador.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, 500);
+ 
   iconoSortear.className = "button-icon";
   imagenPersonaje.setAttribute("src", imagenCelebracion);
+  mostrarConfetti();
 
 }
 
@@ -292,6 +304,26 @@ function actualizarInterfaceSorteoNoRealizado() {
   textoBotonSorteo.innerText = "Sortear Amigo Secreto";
   iconoSortear.innerText = "🎲";
 }
+
+function botonModoOscuro(){
+
+  const btnMOscuro = document.getElementById("boton-Modo-Oscuro");
+  const section = document.querySelector(".input-section");
+  document.body.classList.toggle("noche");
+  section.classList.toggle("noche")
+
+ btnMOscuro.textContent=(btnMOscuro.textContent==="🌞")?"🌛":"🌞";
+
+  }
+function mostrarConfetti() {
+  // Confetti básico desde el centro
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 } // Desde la parte media de la pantalla
+  });
+}
+
 
 // Initialize
 actualizarMensajeEstado();

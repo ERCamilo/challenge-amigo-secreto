@@ -7,329 +7,270 @@
   --color-button-hover: #e55720;
   --color-text: #444444;
   --color-white: #FFFFFF;
+  --color-relleno:#FFF9EB;
 }
+
+body.noche{
+    /* Otras propiedades */
+  --color-primary: #4B69FD;
+  --color-secondary: #FFF9EB;
+  --color-tertiary: #dd2525;
+  --color-button: #1449e7;
+  --color-button-hover: #2320e5;
+  --color-text: #ece4e4;
+  --color-relleno:#444444;
+}
+
 
 * {
-  /* Modelo de caja */
+
   box-sizing: border-box;
-
-  /* Márgenes */
   margin: 0;
-
-  /* Relleno */
   padding: 0;
 }
+
 
 body {
   /* Modelo de caja */
   display: flex;
-
-  /* Flexbox y Grid */
   justify-content: center;
   align-items: center;
-
-  /* Dimensiones */
   height: 100vh;
-
-  /* Fondos */
-  background: linear-gradient(135deg, var(--color-primary) 0%, #3651e8 100%);
-
-  /* Tipografía */
+  background:linear-gradient(135deg, var(--color-primary) 8%, #000835 200%);
   font-family: "Inter", sans-serif;
+  overflow: hidden;
+  color: var(--color-text);
 }
 
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/2iiH.gif"),linear-gradient(135deg, #000 10%, #3651e8 100%);
+  clip-path: circle(0% at 56.4% 5%); /* Oculto hacia la derecha */
+  transition: clip-path 1.5s ease-in-out;
+  z-index: 0;
+}
+
+/* Al hacer hover, la noche avanza de derecha a izquierda */
+body.noche::before {
+ clip-path: circle(100% at 56.4% 5%);  /* Se expande hasta cubrir todo */
+}
+
+
 .main-content {
-  /* Modelo de caja */
+  position: relative;
+  z-index: 1;
   display: flex;
-
-  /* Flexbox y Grid */
   flex-direction: column;
-
-  /* Dimensiones */
   height: 100%;
   width: 100%;
   max-width: 800px;
 }
 
 .header-banner {
-  /* Modelo de caja */
+  
   display: flex;
-
-  /* Flexbox y Grid */
   flex: 40%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  /* Relleno */
   padding: 40px 20px 0;
-
-  /* Tipografía */
   text-align: center;
 }
 
 .input-section {
-  /* Modelo de caja */
+  overflow: hidden;
+  position: relative;
   display: flex;
-
-  /* Flexbox y Grid */
   flex: 60%;
   flex-direction: column;
   align-items: center;
-
-  /* Dimensiones */
   width: 100%;
-
-  /* Relleno */
   padding: 30px 20px;
-
-  /* Bordes */
   border: 1px solid #000;
   border-radius: 64px 64px 0 0;
-
-  /* Fondos */
   background-color: var(--color-secondary);
-
-  /* Colores y efectos */
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.5;
+}
+
+.input-section::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:#222; /* color oscuro */
+  z-index: 0;
+  transform: translateY(-100%);
+  transition: transform 1.5s ease-in-out;
+}
+
+.input-section.noche::before{
+  overflow: hidden;
+  background-color: #222;
+  height: 100%;
+  transform: translateY(0);
+  
+}
+
+body.noche .input-name::placeholder {
+  color: #aaa;
+}
+
+body.noche .input-name {
+  background-color: #333;
+  border-color: #555;
+  color: #eee;
+}
+
+
+.input-section * {
+  position: relative;
+  z-index: 1;
 }
 
 .main-title {
-  /* Márgenes */
-  margin-bottom: 20px;
 
-  /* Tipografía */
+  margin-bottom: 20px;
   font-size: clamp(32px, 8vw, 48px);
   font-family: "Merriweather", serif;
   font-weight: 900;
   font-style: italic;
-
-  /* Colores y efectos */
   color: var(--color-white);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .gift-icon {
-  /* Márgenes */
+
   margin-bottom: 20px;
-
-  /* Tipografía */
   font-size: 60px;
-
-  /* Transiciones y animaciones */
   animation: bounce 2s infinite;
 }
 
 .section-title {
-  /* Márgenes */
-  margin: 10px 0 20px;
 
-  /* Tipografía */
+  margin: 10px 0 20px;
   font-family: "Inter", serif;
   font-size: clamp(24px, 5vw, 36px);
   font-weight: 700;
   text-align: center;
-
-  /* Colores y efectos */
   color: var(--color-primary);
 }
 
 .input-wrapper {
-  /* Modelo de caja */
+
   display: flex;
-
-  /* Flexbox y Grid */
   justify-content: center;
-
-  /* Dimensiones */
   width: 100%;
   max-width: 500px;
-
-  /* Márgenes */
   margin-bottom: 20px;
 }
 
 .input-name {
-  /* Flexbox y Grid */
+
   flex: 1;
-
-  /* Relleno */
   padding: 12px 15px;
-
-  /* Bordes */
   border-radius: 25px 0 0 25px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--color-secondary);
   border-right: none;
-
-  /* Tipografía */
   font-size: 16px;
   font-family: "Inter", sans-serif;
-
-  /* Transiciones y animaciones */
   transition: all 0.3s ease;
 }
 
 .input-name:focus {
-  /* Bordes */
+
   border-color: var(--color-button);
-
-  /* Colores y efectos */
   box-shadow: 0 0 0 3px rgba(254, 101, 43, 0.1);
-
-  /* Otras propiedades */
   outline: none;
 }
 
 .button-add,
 .button-addLista {
-  /* Relleno */
+ 
   padding: 12px 20px;
-
-  /* Bordes */
   border: 2px solid var(--color-button);
-
-  /* Fondos */
   background-color: var(--color-button);
-
-  /* Tipografía */
   font-size: 16px;
   font-weight: 600;
   font-family: "Inter", sans-serif;
-
-  /* Colores y efectos */
   color: var(--color-white);
-
-  /* Transiciones y animaciones */
   transition: all 0.3s ease;
-
-  /* Interactividad */
   cursor: pointer;
 }
 
 .button-addLista:hover,
 .button-add:hover {
-  /* Bordes */
+  
   border-color: var(--color-button-hover);
-
-  /* Fondos */
   background-color: var(--color-button-hover);
-
-  /* Colores y efectos */
   box-shadow: 0 4px 12px rgba(254, 101, 43, 0.3);
-
-  /* Otras propiedades */
   transform: translateY(-2px);
 }
 
 .button-addLista:active,
 .button-add:active {
-  /* Otras propiedades */
+
   transform: translateY(0);
 }
 
 .name-list {
-  /* Modelo de caja */
-  display: flex;
 
-  /* Flexbox y Grid */
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-
-  /* Dimensiones */
   width: 100%;
   max-width: 600px;
-
-  /* Márgenes */
   margin: 20px 0;
-
-  /* Tipografía */
   font-family: "Inter", sans-serif;
   font-size: 16px;
-
-  /* Colores y efectos */
   color: var(--color-text);
-
-  /* Otras propiedades */
   list-style-type: none;
 }
 
 .name-list li {
-  /* Relleno */
+ 
   padding: 8px 16px;
-
-  /* Bordes */
   border: 2px solid #e0e0e0;
   border-radius: 20px;
-
-  /* Fondos */
-  background: white;
-
-  /* Tipografía */
+  background: var(--color-relleno);
   font-weight: 500;
-
-  /* Colores y efectos */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  /* Transiciones y animaciones */
   transition: all 0.3s ease;
 }
 
 .name-list li:hover {
-  /* Colores y efectos */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 
-  /* Otras propiedades */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
 
 .resaltado {
-  /* Fondos */
+
   background: linear-gradient(135deg, #ffd54f, #ffeb3b) !important;
-
-  /* Tipografía */
   font-weight: bold !important;
-
-  /* Colores y efectos */
   color: #333 !important;
   box-shadow: 0 4px 15px rgba(255, 193, 7, 0.6) !important;
-
-  /* Transiciones y animaciones */
   transition: all 0.2s ease !important;
-
-  /* Otras propiedades */
   transform: scale(1.05) !important;
 }
 
 .ganador {
-  /* Posicionamiento */
+
   z-index: 10;
   position: relative;
-
-  /* Fondos */
   background: linear-gradient(135deg, var(--color-button), var(--color-button-hover)) !important;
-
-  /* Tipografía */
   font-weight: bold !important;
-
-  /* Colores y efectos */
   color: white !important;
-
-  /* Transiciones y animaciones */
   animation: winner-pulse 1s ease-in-out infinite alternate;
-
-  /* Otras propiedades */
   transform: scale(1.15) !important;
 }
 
 .result-list {
   top: 0;
   width: 100%;
-  color: white;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.result-list {
   opacity: 1;
   display: flex;
   align-items: center;
@@ -342,98 +283,70 @@ body {
 }
 
 .button-container {
-  /* Dimensiones */
+ 
   width: 100%;
   max-width: 300px;
-
-  /* Márgenes */
   margin-top: 20px;
 }
 
 .button-draw,
 .button-draw2 {
-  /* Modelo de caja */
+  
   display: flex;
-
-  /* Flexbox y Grid */
   align-items: center;
   justify-content: center;
   gap: 10px;
-
-  /* Dimensiones */
   width: 100%;
-
-  /* Relleno */
   padding: 15px 20px;
-
-  /* Bordes */
   border: none;
   border-radius: 25px;
-
-  /* Tipografía */
   font-size: 16px;
   font-weight: 600;
   font-family: "Inter", sans-serif;
-
-  /* Transiciones y animaciones */
   transition: all 0.3s ease;
-
-  /* Interactividad */
   cursor: pointer;
 }
 
 .button-draw {
-  /* Fondos */
+ 
   background: linear-gradient(135deg, var(--color-button), var(--color-button-hover));
-
-  /* Colores y efectos */
   color: var(--color-white);
   box-shadow: 0 4px 15px rgba(254, 101, 43, 0.3);
 }
 
 .button-draw:hover {
-  /* Colores y efectos */
+  
   box-shadow: 0 6px 20px rgba(254, 101, 43, 0.4);
-
-  /* Otras propiedades */
   transform: translateY(-2px);
 }
 
 .button-draw2 {
-  /* Fondos */
-  background: linear-gradient(135deg, #666, #555);
 
-  /* Colores y efectos */
+  background: linear-gradient(135deg, #666, #555);
   color: white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .button-draw2:hover {
-  /* Fondos */
+  
   background: linear-gradient(135deg, var(--color-button), var(--color-button-hover));
-
-  /* Colores y efectos */
   box-shadow: 0 6px 20px rgba(254, 101, 43, 0.4);
-
-  /* Otras propiedades */
   transform: translateY(-2px);
 }
 
 .button-icon {
-  /* Tipografía */
+
   font-size: 20px;
 }
 
 .spinning {
-  /* Transiciones y animaciones */
+ 
   animation: spin 0.5s linear infinite;
 }
 
 .button-addLista {
-  /* Bordes */
-  border-radius: 0 25px 25px 0;
 
-  /* Fondos */
+  border-radius: 0 25px 25px 0;
   background-color: #3d59ef;
 }
 
@@ -454,14 +367,41 @@ body {
 
 
 .resultado-nombre {
-  opacity: 0;
   margin-top: 0;
   font-size: clamp(32px, 8vw, 48px);
   font-family: "Merriweather", serif;
   font-weight: 500;
-  color: #fe652b;
+
   font-style: italic;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   top: 0;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+
+.incono-modo{
+  position: absolute;
+  left: 65%;
+  top: 0%;
+  font-size: 3em;
+  animation: rotar2 2s alternate-reverse infinite;
+  transition: all 0.3s;
+}
+
+
+.incono-modo:hover{
+  font-size: 5.5em;
+}
+
+@keyframes rotar2 {
+  form {
+    transform: rotate(-22deg);
+  }
+
+  to {
+    transform: rotate(20deg);
+  
+  }
+
 }
