@@ -227,10 +227,9 @@ function finalizarSorteo(indiceGanador, ultimoIluminado) {
       elementoGanador.classList.add("ganador");
     }
 
-    cuadroResultado.innerText = ``;
+    cuadroResultado.innerText = `Tu amigo secreto es:`;
     
     textoResultado.innerText = `¡${nombreAmigoSecreto}!`;
-    cuadroResultado.style.setProperty("opacity", 0)
     textoResultado.style.setProperty("opacity", 1);
     sorteoRealizado = true;
     actualizarInterfaceSorteoRealizado();
